@@ -1,7 +1,4 @@
 from django.db import models
-from product.models import Product
-
-NULLABLE = {'null': True, 'blank': True}
 
 
 class Link(models.Model):
@@ -13,5 +10,3 @@ class Link(models.Model):
     street = models.CharField(max_length=100, verbose_name='улица')
     number = models.CharField(max_length=10, verbose_name='номер')
     house = models.CharField(max_length=50, verbose_name='дом')
-
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, verbose_name='продукт', **NULLABLE)
