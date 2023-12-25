@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {'null': True, 'blank': True}
 
 
@@ -14,6 +16,14 @@ class Link(models.Model):
     house = models.CharField(max_length=50, verbose_name='дом')
     debt = models.FloatField(default=None, verbose_name='долг', **NULLABLE)
     create = models.DateTimeField(auto_now=True, verbose_name='время создания')
-    factory = models.BooleanField(verbose_name='завод')
+    factory = models.BooleanField(default=False, verbose_name='завод')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE, verbose_name='владелец')
 
     supplier = models.ForeignKey('self', on_delete=models.SET_NULL, **NULLABLE, verbose_name='поставщик')
+
+    def __str__(self):
+        return f'{self.name}, {self.email}, {self.contact}'
+
+    class Meta:
+        verbose_name = 'звено'
+        verbose_name_plural = 'звенья'
