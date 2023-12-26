@@ -19,3 +19,11 @@ class LinkSerializers(serializers.ModelSerializer):
     class Meta:
         model = Link
         exclude = ('owner',)
+
+
+class LinkUpdateSerializers(LinkSerializers):
+
+    class Meta:
+        model = Link
+        exclude = ('owner',)
+        extra_kwargs = {'debt': {'read_only': True}}

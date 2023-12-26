@@ -22,7 +22,7 @@ class Link(models.Model):
     number = models.CharField(max_length=10, verbose_name='номер')
     house = models.CharField(max_length=50, verbose_name='дом')
     debt = models.FloatField(default=0, verbose_name='долг')
-    create = models.DateTimeField(auto_now=True, verbose_name='время создания')
+    create = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     structure = models.CharField(max_length=2, choices=choice, verbose_name='структура')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE, verbose_name='владелец')
 
