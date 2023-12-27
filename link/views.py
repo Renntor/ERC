@@ -24,6 +24,7 @@ class LinkRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 
         return Response(serializer.data)
 
+
 class LinkListCreateAPIView(generics.ListCreateAPIView):
     queryset = Link.objects.all()
     serializer_class = LinkSerializers
@@ -34,4 +35,3 @@ class LinkListCreateAPIView(generics.ListCreateAPIView):
         new_object = serializer.save()
         new_object.owner = self.request.user
         new_object.save()
-
