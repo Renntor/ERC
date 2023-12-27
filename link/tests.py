@@ -110,7 +110,6 @@ class LinkTestCase(APITestCase):
              'create': response.json()['create'], 'structure': 'FC', 'supplier': None}
         )
 
-
     def test_destroy_link(self):
         response = self.client.delete(
             reverse('link:retrieve_update_destroy_link', kwargs={'pk': self.link.id}),

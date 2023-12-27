@@ -3,6 +3,7 @@ from link.models import Link
 from django.urls import reverse
 from django.utils.html import format_html
 
+
 def linkify(field_name):
     """
     Converts a foreign key value into clickable links.
@@ -36,5 +37,3 @@ class LinkAdmin(admin.ModelAdmin):
                     'number', 'house', 'debt', 'create', linkify('supplier'))
     list_filter = ('city',)
     actions = [debt_nullification]
-
-
